@@ -1,0 +1,67 @@
+"""
+following html links using BeautifulSoup program
+"""
+import urllib.request
+from bs4 import BeautifulSoup
+import json
+import ssl
+
+scontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+url = input('Enter -')
+count = int(input('Count'))
+pos = int(input('position'))
+y = 0
+n = pos - 1
+html =urllib.request.urlopen(url, context=scontext).read()
+soup = BeautifulSoup(html,"lxml")
+tags = soup.find_all('a')
+x = [tag.get('href') for tag in tags]
+print(x[n])
+new_url = str(x[n])
+
+
+while y<count:
+    html =urllib.request.urlopen(new_url, context=scontext).read()
+    soup = BeautifulSoup(html,"lxml")
+    tags = soup.find_all('a')
+    x = [tag.get('href') for tag in tags]
+    url = str(x[n])
+    print(url)
+    y = y+1
+
+
+
+
+
+
+"""
+for tag in x:
+    print(tag.string)
+
+for tag in x:
+    nom = tag.string
+    print(nom)
+"""
+
+
+
+
+
+
+# retreive a list of anchor tags
+# each tag is like a dictionary of HTML attributes
+
+"""
+The below two methods can be used to store the links of anchor tags and move to the
+respective childrens
+#tags = soup('a') #OR
+#tags = soup.find_all('a')# and then execute the below lines
+
+#for tag in tags:
+     print(tag.get('href',None))
+
+for tag in soup.find_all('a'):
+    x = [tag.string]
+    print(x)
+"""
+
