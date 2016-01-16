@@ -1,0 +1,15 @@
+"""
+Writing a program that reads a url and extract the data in the json format.
+Using json parser, the number of counts is extracted and summed up
+"""
+import requests
+
+url = input("Enter the URL:")
+
+data = requests.get(url).json()
+
+count = [item['count'] for item in data['comments']]
+
+print('Count:',len(count))
+
+print('Sum:',sum(count))
