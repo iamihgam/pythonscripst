@@ -1,0 +1,38 @@
+DB = Database("example")
+example_data = {
+    ("example","A"):{
+        "name":"A",
+        "exchanges":[{"amount":1.0, "input":("example", "B"), "type":"technosphere"}],
+        "unit" :"kilogram"
+        "location" : "India"
+        "categories":("energy")
+},
+    ("example", "B") : {
+        "name":"B",
+        "exchanges":[],
+        "unit":"microgram"
+        "location" : "tamilnadu"
+        "categories":("raw materials")
+}
+}
+
+india_data = {
+    ("example", "A"): {
+        "name": "A",
+        "exchanges": [{
+            "amount": 1.0,
+            "input": ("example", "B"),
+            "type": "technosphere"
+            }],
+        'unit': 'kilogram',
+        'location': 'here',
+        'categories': ("very", "interesting")
+        },
+    ("example", "B"): {
+        "name": "B",
+        "exchanges": [],
+        'unit': 'microgram',
+        'location': 'there',
+        'categories': ('quite', 'boring')
+        }
+    }
