@@ -1,0 +1,9 @@
+# using regex , extracting the list of numbers and summing up
+import re
+import urllib.request
+
+
+fin = urllib.request.urlopen('http://python-data.dr-chuck.net/regex_sum_213175.txt').read()
+x = re.findall(b"[0-9]+",fin)
+y = [int(l) for l in x]
+print(sum(y))
