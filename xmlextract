@@ -1,0 +1,31 @@
+"""
+writing  a pyscript to parse an xml file , calculate the number of  counts of comments and
+sum it up
+"""
+import urllib.request
+import xml.etree.ElementTree as ET
+
+
+url = input("Enter the Url-") # taking input for the respective url
+xmlread = urllib.request.urlopen(url).read() # opening and reading  the respective url
+print("Retreiving", url)
+print("Retrieved", len(xmlread),"characters")
+
+tree = ET.fromstring(xmlread)  # sparsing the xml using element tree
+
+ # Method 1
+count = tree.findall(".//count")
+print("count:",len(count))
+num  = [tag.text for tag in count]
+x = sum(int (i) for i in num)
+print ('sum of count:',x)
+
+# Method 2
+"""
+countsum = 0
+lst = tree.findall(".comment")
+for item in lst:
+    count = item.find('count').text
+    print(count)
+    countsum += int(count)
+    """
